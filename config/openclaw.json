@@ -14,11 +14,7 @@
   "tools": {
     "web": {
       "search": {
-        "enabled": true,
-        "provider": "google",
-        "google": {
-          "cx": "22cca847c0f424b6c"
-        }
+        "enabled": false
       }
     }
   },
@@ -37,7 +33,7 @@
         "C0ABQLYUE0K": { "enabled": true }
       },
       "replyToModeByChatType": {
-        "direct": "off",
+        "direct": "all",
         "channel": "all",
         "group": "all"
       }
@@ -53,6 +49,25 @@
     "entries": {
       "slack": {
         "enabled": true
+      }
+    }
+  },
+  "models": {
+    "providers": {
+      "google": {
+        "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
+        "api": "google-generative-ai",
+        "models": [
+          {
+            "id": "gemini-2.5-flash",
+            "name": "Gemini 2.5 Flash",
+            "reasoning": false,
+            "input": ["text", "image"],
+            "cost": { "input": 0.15, "output": 0.6, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 1048576,
+            "maxTokens": 65536
+          }
+        ]
       }
     }
   },

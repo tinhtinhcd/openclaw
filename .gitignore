@@ -83,3 +83,6 @@ config/agents/*/sessions/
 test-google-search*.mjs
 verify-patch.mjs
 patch-google-search.*
+config/agents/main/agent/auth.json
+config/agents/main/agent/models.json
+config/agents/main/agent/models.json

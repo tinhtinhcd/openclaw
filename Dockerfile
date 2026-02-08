@@ -9,12 +9,19 @@ RUN corepack enable
 WORKDIR /app
 
 ARG OPENCLAW_DOCKER_APT_PACKAGES=""
-RUN if [ -n "$OPENCLAW_DOCKER_APT_PACKAGES" ]; then \
-      apt-get update && \
-      DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends $OPENCLAW_DOCKER_APT_PACKAGES && \
-      apt-get clean && \
-      rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*; \
-    fi
+RUN apt-get update && \
+  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+  git \
+  $OPENCLAW_DOCKER_APT_PACKAGES && \
+  # Install GitHub CLI
+  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+  -o /usr/share/keyrings/githubcli-archive-keyring.gpg && \
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
+  > /etc/apt/sources.list.d/github-cli.list && \
+  apt-get update && \
+  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends gh && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
 COPY ui/package.json ./ui/package.json
@@ -38,6 +45,14 @@ RUN chown -R node:node /app
 # The node:22-bookworm image includes a 'node' user (uid 1000)
 # This reduces the attack surface by preventing container escape via root privileges
 USER node
+
+# Configure git identity, HTTPS credential helper, and force HTTPS over SSH
+RUN git config --global user.name "Van Bot" && \
+  git config --global user.email "bot@tinhtinhcd.com" && \
+  git config --global credential.helper '!f() { echo username=x-access-token; echo password=$GITHUB_TOKEN; }; f' && \
+  git config --global url.'https://github.com/'.insteadOf 'git@github.com:' && \
+  git config --global url.'https://github.com/'.insteadOf 'ssh://git@github.com/' && \
+  gh config set git_protocol https
 
 # Start gateway server with default config.
 # Binds to loopback (127.0.0.1) by default for security.
