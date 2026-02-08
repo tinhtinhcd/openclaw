@@ -75,3 +75,11 @@ USER.md
 memory/
 .agent/*.json
 !.agent/workflows/
+
+# Session logs (contain sensitive data)
+config/agents/*/sessions/
+
+# Temp test/patch scripts
+test-google-search*.mjs
+verify-patch.mjs
+patch-google-search.*

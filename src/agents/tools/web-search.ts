@@ -17,7 +17,7 @@ import {
   writeCache,
 } from "./web-shared.js";
 
-const SEARCH_PROVIDERS = ["brave", "perplexity"] as const;
+const SEARCH_PROVIDERS = ["brave", "perplexity", "google"] as const;
 const DEFAULT_SEARCH_COUNT = 5;
 const MAX_SEARCH_COUNT = 10;
 
@@ -103,6 +103,23 @@ type PerplexitySearchResponse = {
 
 type PerplexityBaseUrlHint = "direct" | "openrouter";
 
+type GoogleSearchConfig = {
+  apiKey?: string;
+  cx?: string;
+};
+
+type GoogleSearchResult = {
+  title?: string;
+  link?: string;
+  snippet?: string;
+};
+
+type GoogleSearchResponse = {
+  items?: GoogleSearchResult[];
+};
+
+const GOOGLE_CSE_ENDPOINT = "https://www.googleapis.com/customsearch/v1";
+
 function resolveSearchConfig(cfg?: OpenClawConfig): WebSearchConfig {
   const search = cfg?.tools?.web?.search;
   if (!search || typeof search !== "object") {
@@ -137,6 +154,14 @@ function missingSearchKeyPayload(provider: (typeof SEARCH_PROVIDERS)[number]) {
       docs: "https://docs.openclaw.ai/tools/web",
     };
   }
+  if (provider === "google") {
+    return {
+      error: "missing_google_api_key",
+      message:
+        "web_search (google) needs an API key and a Custom Search Engine ID (cx). Set GOOGLE_API_KEY (or GEMINI_API_KEY) and GOOGLE_CSE_CX in the Gateway environment, or configure tools.web.search.google.apiKey and tools.web.search.google.cx.",
+      docs: "https://docs.openclaw.ai/tools/web",
+    };
+  }
   return {
     error: "missing_brave_api_key",
     message: `web_search needs a Brave Search API key. Run \`${formatCliCommand("openclaw configure --section web")}\` to store it, or set BRAVE_API_KEY in the Gateway environment.`,
@@ -152,10 +177,52 @@ function resolveSearchProvider(search?: WebSearchConfig): (typeof SEARCH_PROVIDE
   if (raw === "perplexity") {
     return "perplexity";
   }
+  if (raw === "google") {
+    return "google";
+  }
   if (raw === "brave") {
     return "brave";
   }
   return "brave";
+}
+
+function resolveGoogleSearchConfig(search?: WebSearchConfig): GoogleSearchConfig {
+  if (!search || typeof search !== "object") {
+    return {};
+  }
+  const google = "google" in search ? search.google : undefined;
+  if (!google || typeof google !== "object") {
+    return {};
+  }
+  return google as GoogleSearchConfig;
+}
+
+function resolveGoogleApiKey(google?: GoogleSearchConfig): string | undefined {
+  const fromConfig = normalizeApiKey(google?.apiKey);
+  if (fromConfig) {
+    return fromConfig;
+  }
+  const fromEnvGoogle = normalizeApiKey(process.env.GOOGLE_API_KEY);
+  if (fromEnvGoogle) {
+    return fromEnvGoogle;
+  }
+  const fromEnvGemini = normalizeApiKey(process.env.GEMINI_API_KEY);
+  if (fromEnvGemini) {
+    return fromEnvGemini;
+  }
+  return undefined;
+}
+
+function resolveGoogleCx(google?: GoogleSearchConfig): string | undefined {
+  const fromConfig = normalizeApiKey(google?.cx);
+  if (fromConfig) {
+    return fromConfig;
+  }
+  const fromEnv = normalizeApiKey(process.env.GOOGLE_CSE_CX);
+  if (fromEnv) {
+    return fromEnv;
+  }
+  return undefined;
 }
 
 function resolvePerplexityConfig(search?: WebSearchConfig): PerplexityConfig {
@@ -350,6 +417,38 @@ async function runPerplexitySearch(params: {
   return { content, citations };
 }
 
+async function runGoogleSearch(params: {
+  query: string;
+  count: number;
+  apiKey: string;
+  cx: string;
+  timeoutSeconds: number;
+  search_lang?: string;
+}): Promise<GoogleSearchResult[]> {
+  const url = new URL(GOOGLE_CSE_ENDPOINT);
+  url.searchParams.set("q", params.query);
+  url.searchParams.set("key", params.apiKey);
+  url.searchParams.set("cx", params.cx);
+  url.searchParams.set("num", String(params.count));
+  if (params.search_lang) {
+    url.searchParams.set("lr", `lang_${params.search_lang}`);
+  }
+
+  const res = await fetch(url.toString(), {
+    method: "GET",
+    headers: { Accept: "application/json" },
+    signal: AbortSignal.timeout(params.timeoutSeconds * 1000),
+  });
+
+  if (!res.ok) {
+    const detail = await readResponseText(res);
+    throw new Error(`Google Custom Search API error (${res.status}): ${detail || res.statusText}`);
+  }
+
+  const data = (await res.json()) as GoogleSearchResponse;
+  return Array.isArray(data.items) ? data.items : [];
+}
+
 async function runWebSearch(params: {
   query: string;
   count: number;
@@ -363,6 +462,7 @@ async function runWebSearch(params: {
   freshness?: string;
   perplexityBaseUrl?: string;
   perplexityModel?: string;
+  googleCx?: string;
 }): Promise<Record<string, unknown>> {
   const cacheKey = normalizeCacheKey(
     params.provider === "brave"
@@ -392,6 +492,40 @@ async function runWebSearch(params: {
       tookMs: Date.now() - start,
       content: wrapWebContent(content),
       citations,
+    };
+    writeCache(SEARCH_CACHE, cacheKey, payload, params.cacheTtlMs);
+    return payload;
+  }
+
+  if (params.provider === "google") {
+    const results = await runGoogleSearch({
+      query: params.query,
+      count: params.count,
+      apiKey: params.apiKey,
+      cx: params.googleCx ?? "",
+      timeoutSeconds: params.timeoutSeconds,
+      search_lang: params.search_lang,
+    });
+
+    const mapped = results.map((entry) => {
+      const title = entry.title ?? "";
+      const url = entry.link ?? "";
+      const description = entry.snippet ?? "";
+      const rawSiteName = resolveSiteName(url);
+      return {
+        title: title ? wrapWebContent(title, "web_search") : "",
+        url,
+        description: description ? wrapWebContent(description, "web_search") : "",
+        siteName: rawSiteName || undefined,
+      };
+    });
+
+    const payload = {
+      query: params.query,
+      provider: params.provider,
+      count: mapped.length,
+      tookMs: Date.now() - start,
+      results: mapped,
     };
     writeCache(SEARCH_CACHE, cacheKey, payload, params.cacheTtlMs);
     return payload;
@@ -469,11 +603,14 @@ export function createWebSearchTool(options?: {
 
   const provider = resolveSearchProvider(search);
   const perplexityConfig = resolvePerplexityConfig(search);
+  const googleConfig = resolveGoogleSearchConfig(search);
 
   const description =
     provider === "perplexity"
       ? "Search the web using Perplexity Sonar (direct or via OpenRouter). Returns AI-synthesized answers with citations from real-time web search."
-      : "Search the web using Brave Search API. Supports region-specific and localized search via country and language parameters. Returns titles, URLs, and snippets for fast research.";
+      : provider === "google"
+        ? "Search the web using Google Custom Search API. Returns titles, URLs, and snippets for fast research."
+        : "Search the web using Brave Search API. Supports region-specific and localized search via country and language parameters. Returns titles, URLs, and snippets for fast research.";
 
   return {
     label: "Web Search",
@@ -483,10 +620,16 @@ export function createWebSearchTool(options?: {
     execute: async (_toolCallId, args) => {
       const perplexityAuth =
         provider === "perplexity" ? resolvePerplexityApiKey(perplexityConfig) : undefined;
+      const googleApiKey = provider === "google" ? resolveGoogleApiKey(googleConfig) : undefined;
+      const googleCx = provider === "google" ? resolveGoogleCx(googleConfig) : undefined;
       const apiKey =
-        provider === "perplexity" ? perplexityAuth?.apiKey : resolveSearchApiKey(search);
+        provider === "perplexity"
+          ? perplexityAuth?.apiKey
+          : provider === "google"
+            ? googleApiKey
+            : resolveSearchApiKey(search);
 
-      if (!apiKey) {
+      if (!apiKey || (provider === "google" && !googleCx)) {
         return jsonResult(missingSearchKeyPayload(provider));
       }
       const params = args as Record<string, unknown>;
@@ -530,6 +673,7 @@ export function createWebSearchTool(options?: {
           perplexityAuth?.apiKey,
         ),
         perplexityModel: resolvePerplexityModel(perplexityConfig),
+        googleCx,
       });
       return jsonResult(result);
     },
@@ -540,4 +684,6 @@ export const __testing = {
   inferPerplexityBaseUrlFromApiKey,
   resolvePerplexityBaseUrl,
   normalizeFreshness,
+  resolveGoogleApiKey,
+  resolveGoogleCx,
 } as const;

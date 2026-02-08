@@ -3,7 +3,59 @@
     "ollama": {
       "baseUrl": "http://ollama:11434/v1",
       "api": "openai-completions",
-      "models": [],
+      "models": [
+        {
+          "id": "qwen2.5-coder:7b",
+          "name": "qwen2.5-coder:7b",
+          "reasoning": false,
+          "input": ["text"],
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          },
+          "contextWindow": 128000,
+          "maxTokens": 8192,
+          "params": {
+            "streaming": false
+          }
+        },
+        {
+          "id": "qwen2.5-coder:14b",
+          "name": "qwen2.5-coder:14b",
+          "reasoning": false,
+          "input": ["text"],
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          },
+          "contextWindow": 128000,
+          "maxTokens": 8192,
+          "params": {
+            "streaming": false
+          }
+        },
+        {
+          "id": "llama3.2:latest",
+          "name": "llama3.2:latest",
+          "reasoning": false,
+          "input": ["text"],
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          },
+          "contextWindow": 128000,
+          "maxTokens": 8192,
+          "params": {
+            "streaming": false
+          }
+        }
+      ],
       "apiKey": "OLLAMA_API_KEY"
     },
     "vertex-express": {
@@ -46,6 +98,10 @@
           "maxTokens": 65536
         }
       ]
+    },
+    "github-copilot": {
+      "baseUrl": "https://api.individual.githubcopilot.com",
+      "models": []
     }
   }
 }

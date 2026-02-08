@@ -15,7 +15,10 @@
     "web": {
       "search": {
         "enabled": true,
-        "provider": "perplexity"
+        "provider": "google",
+        "google": {
+          "cx": "22cca847c0f424b6c"
+        }
       }
     }
   },
@@ -30,6 +33,9 @@
       "enabled": true,
       "userTokenReadOnly": true,
       "groupPolicy": "allowlist",
+      "channels": {
+        "C0ABQLYUE0K": { "enabled": true }
+      },
       "replyToModeByChatType": {
         "direct": "off",
         "channel": "all",
