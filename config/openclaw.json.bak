@@ -1,0 +1,17 @@
+{
+  "gateway": {
+    "mode": "local"
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "ollama/llama3.2"
+      }
+    }
+  },
+  "channels": {
+    "slack": {
+      "enabled": false
+    }
+  }
+}

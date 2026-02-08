@@ -69,8 +69,11 @@ const QWEN_PORTAL_DEFAULT_COST = {
   cacheWrite: 0,
 };
 
-const OLLAMA_BASE_URL = "http://127.0.0.1:11434/v1";
-const OLLAMA_API_BASE_URL = "http://127.0.0.1:11434";
+const OLLAMA_BASE_URL = process.env.OLLAMA_BASE_URL || "http://127.0.0.1:11434/v1";
+const OLLAMA_API_BASE_URL = (process.env.OLLAMA_BASE_URL || "http://127.0.0.1:11434/v1").replace(
+  /\/v1$/,
+  "",
+);
 const OLLAMA_DEFAULT_CONTEXT_WINDOW = 128000;
 const OLLAMA_DEFAULT_MAX_TOKENS = 8192;
 const OLLAMA_DEFAULT_COST = {
@@ -490,12 +493,12 @@ export async function resolveImplicitProviders(params: {
     break;
   }
 
-  // Ollama provider - only add if explicitly configured
+  // Ollama provider - add if API key is configured OR if OLLAMA_BASE_URL is set
   const ollamaKey =
     resolveEnvApiKeyVarName("ollama") ??
     resolveApiKeyFromProfiles({ provider: "ollama", store: authStore });
-  if (ollamaKey) {
-    providers.ollama = { ...(await buildOllamaProvider()), apiKey: ollamaKey };
+  if (ollamaKey || process.env.OLLAMA_BASE_URL) {
+    providers.ollama = { ...(await buildOllamaProvider()), apiKey: ollamaKey ?? "ollama" };
   }
 
   return providers;

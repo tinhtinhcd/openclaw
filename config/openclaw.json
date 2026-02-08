@@ -1,0 +1,57 @@
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "google/gemini-2.5-flash",
+        "fallbacks": ["groq/llama-3.3-70b-versatile"]
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    }
+  },
+  "tools": {
+    "web": {
+      "search": {
+        "enabled": true,
+        "provider": "perplexity"
+      }
+    }
+  },
+  "commands": {
+    "native": true,
+    "nativeSkills": true
+  },
+  "channels": {
+    "slack": {
+      "mode": "socket",
+      "webhookPath": "/slack/events",
+      "enabled": true,
+      "userTokenReadOnly": true,
+      "groupPolicy": "allowlist",
+      "replyToModeByChatType": {
+        "direct": "off",
+        "channel": "all",
+        "group": "all"
+      }
+    }
+  },
+  "gateway": {
+    "mode": "local"
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "plugins": {
+    "entries": {
+      "slack": {
+        "enabled": true
+      }
+    }
+  },
+  "meta": {
+    "lastTouchedVersion": "2026.2.6",
+    "lastTouchedAt": "2026-02-07T03:30:45.088Z"
+  }
+}

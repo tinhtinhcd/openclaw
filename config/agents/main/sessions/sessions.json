@@ -1,0 +1,1514 @@
+{
+  "agent:main:main": {
+    "origin": {
+      "label": "tinhtinhcd",
+      "provider": "slack",
+      "surface": "slack",
+      "chatType": "direct",
+      "from": "slack:U0ACRBNH0QY",
+      "to": "user:U0ACRBNH0QY",
+      "accountId": "default",
+      "threadId": "1770475331.924279"
+    },
+    "sessionId": "f9c72e90-e0b9-4506-9776-ba17ed483867",
+    "updatedAt": 1770516464721,
+    "deliveryContext": {
+      "channel": "slack",
+      "to": "user:U0ACRBNH0QY",
+      "accountId": "default",
+      "threadId": "1770444550.575389"
+    },
+    "lastChannel": "slack",
+    "lastTo": "user:U0ACRBNH0QY",
+    "lastAccountId": "default",
+    "systemSent": true,
+    "abortedLastRun": false,
+    "chatType": "direct",
+    "sessionFile": "/home/node/.openclaw/agents/main/sessions/f9c72e90-e0b9-4506-9776-ba17ed483867.jsonl",
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>/app/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>/app/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>slack</name>\n    <description>Use when you need to control Slack from OpenClaw via the slack tool, including reacting to messages or pinning/unpinning items in Slack channels or DMs.</description>\n    <location>/app/skills/slack/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>/app/skills/weather/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "slack"
+        },
+        {
+          "name": "weather"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/app/skills/healthcheck/SKILL.md",
+          "baseDir": "/app/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/app/skills/skill-creator/SKILL.md",
+          "baseDir": "/app/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "slack",
+          "description": "Use when you need to control Slack from OpenClaw via the slack tool, including reacting to messages or pinning/unpinning items in Slack channels or DMs.",
+          "filePath": "/app/skills/slack/SKILL.md",
+          "baseDir": "/app/skills/slack",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "/app/skills/weather/SKILL.md",
+          "baseDir": "/app/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "inputTokens": 40455,
+    "outputTokens": 306,
+    "totalTokens": 41632,
+    "modelProvider": "google",
+    "model": "gemini-2.5-flash",
+    "contextTokens": 1048576,
+    "systemPromptReport": {
+      "source": "run",
+      "generatedAt": 1770516461726,
+      "sessionId": "f9c72e90-e0b9-4506-9776-ba17ed483867",
+      "sessionKey": "agent:main:main",
+      "provider": "google",
+      "model": "gemini-2.5-flash",
+      "workspaceDir": "/home/node/.openclaw/workspace",
+      "bootstrapMaxChars": 20000,
+      "sandbox": {
+        "mode": "off",
+        "sandboxed": false
+      },
+      "systemPrompt": {
+        "chars": 23607,
+        "projectContextChars": 13871,
+        "nonProjectContextChars": 9736
+      },
+      "injectedWorkspaceFiles": [
+        {
+          "name": "AGENTS.md",
+          "path": "/home/node/.openclaw/workspace/AGENTS.md",
+          "missing": false,
+          "rawChars": 7783,
+          "injectedChars": 7783,
+          "truncated": false
+        },
+        {
+          "name": "SOUL.md",
+          "path": "/home/node/.openclaw/workspace/SOUL.md",
+          "missing": false,
+          "rawChars": 1922,
+          "injectedChars": 1922,
+          "truncated": false
+        },
+        {
+          "name": "TOOLS.md",
+          "path": "/home/node/.openclaw/workspace/TOOLS.md",
+          "missing": false,
+          "rawChars": 848,
+          "injectedChars": 848,
+          "truncated": false
+        },
+        {
+          "name": "IDENTITY.md",
+          "path": "/home/node/.openclaw/workspace/IDENTITY.md",
+          "missing": false,
+          "rawChars": 629,
+          "injectedChars": 629,
+          "truncated": false
+        },
+        {
+          "name": "USER.md",
+          "path": "/home/node/.openclaw/workspace/USER.md",
+          "missing": false,
+          "rawChars": 755,
+          "injectedChars": 755,
+          "truncated": false
+        },
+        {
+          "name": "HEARTBEAT.md",
+          "path": "/home/node/.openclaw/workspace/HEARTBEAT.md",
+          "missing": false,
+          "rawChars": 166,
+          "injectedChars": 166,
+          "truncated": false
+        },
+        {
+          "name": "BOOTSTRAP.md",
+          "path": "/home/node/.openclaw/workspace/BOOTSTRAP.md",
+          "missing": false,
+          "rawChars": 1444,
+          "injectedChars": 1444,
+          "truncated": false
+        }
+      ],
+      "skills": {
+        "promptChars": 1557,
+        "entries": [
+          {
+            "name": "healthcheck",
+            "blockChars": 456
+          },
+          {
+            "name": "skill-creator",
+            "blockChars": 261
+          },
+          {
+            "name": "slack",
+            "blockChars": 277
+          },
+          {
+            "name": "weather",
+            "blockChars": 185
+          }
+        ]
+      },
+      "tools": {
+        "listChars": 1926,
+        "schemaChars": 14770,
+        "entries": [
+          {
+            "name": "read",
+            "summaryChars": 298,
+            "schemaChars": 392,
+            "propertiesCount": 4
+          },
+          {
+            "name": "edit",
+            "summaryChars": 129,
+            "schemaChars": 591,
+            "propertiesCount": 6
+          },
+          {
+            "name": "write",
+            "summaryChars": 127,
+            "schemaChars": 313,
+            "propertiesCount": 3
+          },
+          {
+            "name": "exec",
+            "summaryChars": 181,
+            "schemaChars": 1037,
+            "propertiesCount": 12
+          },
+          {
+            "name": "process",
+            "summaryChars": 85,
+            "schemaChars": 844,
+            "propertiesCount": 11
+          },
+          {
+            "name": "browser",
+            "summaryChars": 1251,
+            "schemaChars": 1869,
+            "propertiesCount": 28
+          },
+          {
+            "name": "canvas",
+            "summaryChars": 106,
+            "schemaChars": 661,
+            "propertiesCount": 18
+          },
+          {
+            "name": "nodes",
+            "summaryChars": 101,
+            "schemaChars": 1479,
+            "propertiesCount": 33
+          },
+          {
+            "name": "cron",
+            "summaryChars": 2444,
+            "schemaChars": 581,
+            "propertiesCount": 13
+          },
+          {
+            "name": "message",
+            "summaryChars": 180,
+            "schemaChars": 3993,
+            "propertiesCount": 84
+          },
+          {
+            "name": "tts",
+            "summaryChars": 129,
+            "schemaChars": 223,
+            "propertiesCount": 2
+          },
+          {
+            "name": "gateway",
+            "summaryChars": 225,
+            "schemaChars": 465,
+            "propertiesCount": 11
+          },
+          {
+            "name": "agents_list",
+            "summaryChars": 72,
+            "schemaChars": 33,
+            "propertiesCount": 0
+          },
+          {
+            "name": "sessions_list",
+            "summaryChars": 54,
+            "schemaChars": 176,
+            "propertiesCount": 4
+          },
+          {
+            "name": "sessions_history",
+            "summaryChars": 36,
+            "schemaChars": 149,
+            "propertiesCount": 3
+          },
+          {
+            "name": "sessions_send",
+            "summaryChars": 84,
+            "schemaChars": 203,
+            "propertiesCount": 5
+          },
+          {
+            "name": "sessions_spawn",
+            "summaryChars": 107,
+            "schemaChars": 312,
+            "propertiesCount": 8
+          },
+          {
+            "name": "session_status",
+            "summaryChars": 207,
+            "schemaChars": 89,
+            "propertiesCount": 2
+          },
+          {
+            "name": "web_search",
+            "summaryChars": 138,
+            "schemaChars": 733,
+            "propertiesCount": 6
+          },
+          {
+            "name": "web_fetch",
+            "summaryChars": 129,
+            "schemaChars": 360,
+            "propertiesCount": 3
+          },
+          {
+            "name": "memory_search",
+            "summaryChars": 235,
+            "schemaChars": 139,
+            "propertiesCount": 3
+          },
+          {
+            "name": "memory_get",
+            "summaryChars": 151,
+            "schemaChars": 128,
+            "propertiesCount": 3
+          }
+        ]
+      }
+    },
+    "lastThreadId": "1770444550.575389"
+  },
+  "agent:main:slack:channel:d0ac3gsjxj6:thread:1770444524.793219": {
+    "chatType": "channel",
+    "channel": "slack",
+    "groupId": "d0ac3gsjxj6",
+    "displayName": "slack:g-d0ac3gsjxj6",
+    "origin": {
+      "label": "slack:channel:D0AC3GSJXJ6",
+      "provider": "slack",
+      "surface": "slack",
+      "chatType": "channel",
+      "from": "slack:channel:D0AC3GSJXJ6",
+      "to": "channel:D0AC3GSJXJ6",
+      "accountId": "default",
+      "threadId": "1770444524.793219"
+    },
+    "sessionId": "18c3a1b5-3ebe-4b3e-9230-3c75523fd44e",
+    "updatedAt": 1770444536326,
+    "deliveryContext": {
+      "channel": "slack",
+      "threadId": "1770444524.793219"
+    },
+    "lastChannel": "slack",
+    "lastThreadId": "1770444524.793219",
+    "sessionFile": "/home/node/.openclaw/agents/main/sessions/18c3a1b5-3ebe-4b3e-9230-3c75523fd44e.jsonl"
+  },
+  "agent:main:slack:channel:d0ac3gsjxj6:thread:1770444550.575389": {
+    "chatType": "channel",
+    "channel": "slack",
+    "groupId": "d0ac3gsjxj6",
+    "displayName": "slack:g-d0ac3gsjxj6",
+    "origin": {
+      "label": "slack:channel:D0AC3GSJXJ6",
+      "provider": "slack",
+      "surface": "slack",
+      "chatType": "channel",
+      "from": "slack:channel:D0AC3GSJXJ6",
+      "to": "channel:D0AC3GSJXJ6",
+      "accountId": "default",
+      "threadId": "1770444550.575389"
+    },
+    "sessionId": "eab88516-7530-426a-b75c-a97005a306a7",
+    "updatedAt": 1770444554701,
+    "deliveryContext": {
+      "channel": "slack",
+      "threadId": "1770444550.575389"
+    },
+    "lastChannel": "slack",
+    "lastThreadId": "1770444550.575389",
+    "sessionFile": "/home/node/.openclaw/agents/main/sessions/eab88516-7530-426a-b75c-a97005a306a7.jsonl"
+  },
+  "agent:main:main:thread:1770444550.575389": {
+    "origin": {
+      "label": "tinhtinhcd",
+      "provider": "slack",
+      "surface": "slack",
+      "chatType": "direct",
+      "from": "slack:U0ACRBNH0QY",
+      "to": "user:U0ACRBNH0QY",
+      "accountId": "default",
+      "threadId": "1770444550.575389"
+    },
+    "sessionId": "dad13e88-c1ce-4a29-a60c-87ae14df0713",
+    "updatedAt": 1770449233580,
+    "deliveryContext": {
+      "channel": "slack",
+      "to": "user:U0ACRBNH0QY",
+      "accountId": "default",
+      "threadId": "1770444550.575389"
+    },
+    "lastThreadId": "1770444550.575389",
+    "systemSent": true,
+    "abortedLastRun": false,
+    "displayName": "Slack thread #D0AC3GSJXJ6: how are you today?",
+    "chatType": "direct",
+    "lastChannel": "slack",
+    "lastTo": "user:U0ACRBNH0QY",
+    "lastAccountId": "default",
+    "sessionFile": "/home/node/.openclaw/agents/main/sessions/dad13e88-c1ce-4a29-a60c-87ae14df0713-topic-1770444550.575389.jsonl",
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>/app/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>/app/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>slack</name>\n    <description>Use when you need to control Slack from OpenClaw via the slack tool, including reacting to messages or pinning/unpinning items in Slack channels or DMs.</description>\n    <location>/app/skills/slack/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>/app/skills/weather/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "slack"
+        },
+        {
+          "name": "weather"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/app/skills/healthcheck/SKILL.md",
+          "baseDir": "/app/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/app/skills/skill-creator/SKILL.md",
+          "baseDir": "/app/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "slack",
+          "description": "Use when you need to control Slack from OpenClaw via the slack tool, including reacting to messages or pinning/unpinning items in Slack channels or DMs.",
+          "filePath": "/app/skills/slack/SKILL.md",
+          "baseDir": "/app/skills/slack",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "/app/skills/weather/SKILL.md",
+          "baseDir": "/app/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "inputTokens": 51905,
+    "outputTokens": 623,
+    "totalTokens": 51905,
+    "modelProvider": "google",
+    "model": "gemini-2.5-flash-lite",
+    "contextTokens": 1048576,
+    "systemPromptReport": {
+      "source": "run",
+      "generatedAt": 1770449226038,
+      "sessionId": "dad13e88-c1ce-4a29-a60c-87ae14df0713",
+      "sessionKey": "agent:main:main:thread:1770444550.575389",
+      "provider": "google",
+      "model": "gemini-2.5-flash-lite",
+      "workspaceDir": "/home/node/.openclaw/workspace",
+      "bootstrapMaxChars": 20000,
+      "sandbox": {
+        "mode": "off",
+        "sandboxed": false
+      },
+      "systemPrompt": {
+        "chars": 23077,
+        "projectContextChars": 13336,
+        "nonProjectContextChars": 9741
+      },
+      "injectedWorkspaceFiles": [
+        {
+          "name": "AGENTS.md",
+          "path": "/home/node/.openclaw/workspace/AGENTS.md",
+          "missing": false,
+          "rawChars": 7783,
+          "injectedChars": 7783,
+          "truncated": false
+        },
+        {
+          "name": "SOUL.md",
+          "path": "/home/node/.openclaw/workspace/SOUL.md",
+          "missing": false,
+          "rawChars": 1664,
+          "injectedChars": 1664,
+          "truncated": false
+        },
+        {
+          "name": "TOOLS.md",
+          "path": "/home/node/.openclaw/workspace/TOOLS.md",
+          "missing": false,
+          "rawChars": 848,
+          "injectedChars": 848,
+          "truncated": false
+        },
+        {
+          "name": "IDENTITY.md",
+          "path": "/home/node/.openclaw/workspace/IDENTITY.md",
+          "missing": false,
+          "rawChars": 629,
+          "injectedChars": 629,
+          "truncated": false
+        },
+        {
+          "name": "USER.md",
+          "path": "/home/node/.openclaw/workspace/USER.md",
+          "missing": false,
+          "rawChars": 478,
+          "injectedChars": 478,
+          "truncated": false
+        },
+        {
+          "name": "HEARTBEAT.md",
+          "path": "/home/node/.openclaw/workspace/HEARTBEAT.md",
+          "missing": false,
+          "rawChars": 166,
+          "injectedChars": 166,
+          "truncated": false
+        },
+        {
+          "name": "BOOTSTRAP.md",
+          "path": "/home/node/.openclaw/workspace/BOOTSTRAP.md",
+          "missing": false,
+          "rawChars": 1444,
+          "injectedChars": 1444,
+          "truncated": false
+        }
+      ],
+      "skills": {
+        "promptChars": 1557,
+        "entries": [
+          {
+            "name": "healthcheck",
+            "blockChars": 456
+          },
+          {
+            "name": "skill-creator",
+            "blockChars": 261
+          },
+          {
+            "name": "slack",
+            "blockChars": 277
+          },
+          {
+            "name": "weather",
+            "blockChars": 185
+          }
+        ]
+      },
+      "tools": {
+        "listChars": 1926,
+        "schemaChars": 14770,
+        "entries": [
+          {
+            "name": "read",
+            "summaryChars": 298,
+            "schemaChars": 392,
+            "propertiesCount": 4
+          },
+          {
+            "name": "edit",
+            "summaryChars": 129,
+            "schemaChars": 591,
+            "propertiesCount": 6
+          },
+          {
+            "name": "write",
+            "summaryChars": 127,
+            "schemaChars": 313,
+            "propertiesCount": 3
+          },
+          {
+            "name": "exec",
+            "summaryChars": 181,
+            "schemaChars": 1037,
+            "propertiesCount": 12
+          },
+          {
+            "name": "process",
+            "summaryChars": 85,
+            "schemaChars": 844,
+            "propertiesCount": 11
+          },
+          {
+            "name": "browser",
+            "summaryChars": 1251,
+            "schemaChars": 1869,
+            "propertiesCount": 28
+          },
+          {
+            "name": "canvas",
+            "summaryChars": 106,
+            "schemaChars": 661,
+            "propertiesCount": 18
+          },
+          {
+            "name": "nodes",
+            "summaryChars": 101,
+            "schemaChars": 1479,
+            "propertiesCount": 33
+          },
+          {
+            "name": "cron",
+            "summaryChars": 2444,
+            "schemaChars": 581,
+            "propertiesCount": 13
+          },
+          {
+            "name": "message",
+            "summaryChars": 180,
+            "schemaChars": 3993,
+            "propertiesCount": 84
+          },
+          {
+            "name": "tts",
+            "summaryChars": 129,
+            "schemaChars": 223,
+            "propertiesCount": 2
+          },
+          {
+            "name": "gateway",
+            "summaryChars": 225,
+            "schemaChars": 465,
+            "propertiesCount": 11
+          },
+          {
+            "name": "agents_list",
+            "summaryChars": 72,
+            "schemaChars": 33,
+            "propertiesCount": 0
+          },
+          {
+            "name": "sessions_list",
+            "summaryChars": 54,
+            "schemaChars": 176,
+            "propertiesCount": 4
+          },
+          {
+            "name": "sessions_history",
+            "summaryChars": 36,
+            "schemaChars": 149,
+            "propertiesCount": 3
+          },
+          {
+            "name": "sessions_send",
+            "summaryChars": 84,
+            "schemaChars": 203,
+            "propertiesCount": 5
+          },
+          {
+            "name": "sessions_spawn",
+            "summaryChars": 107,
+            "schemaChars": 312,
+            "propertiesCount": 8
+          },
+          {
+            "name": "session_status",
+            "summaryChars": 207,
+            "schemaChars": 89,
+            "propertiesCount": 2
+          },
+          {
+            "name": "web_search",
+            "summaryChars": 175,
+            "schemaChars": 733,
+            "propertiesCount": 6
+          },
+          {
+            "name": "web_fetch",
+            "summaryChars": 129,
+            "schemaChars": 360,
+            "propertiesCount": 3
+          },
+          {
+            "name": "memory_search",
+            "summaryChars": 235,
+            "schemaChars": 139,
+            "propertiesCount": 3
+          },
+          {
+            "name": "memory_get",
+            "summaryChars": 151,
+            "schemaChars": 128,
+            "propertiesCount": 3
+          }
+        ]
+      }
+    }
+  },
+  "agent:main:slack:channel:d0ac3gsjxj6:thread:1770470981.979759": {
+    "chatType": "channel",
+    "channel": "slack",
+    "groupId": "d0ac3gsjxj6",
+    "displayName": "slack:g-d0ac3gsjxj6",
+    "origin": {
+      "label": "slack:channel:D0AC3GSJXJ6",
+      "provider": "slack",
+      "surface": "slack",
+      "chatType": "channel",
+      "from": "slack:channel:D0AC3GSJXJ6",
+      "to": "channel:D0AC3GSJXJ6",
+      "accountId": "default",
+      "threadId": "1770470981.979759"
+    },
+    "sessionId": "d90e24c8-56ec-4309-8067-321addafc678",
+    "updatedAt": 1770470989129,
+    "deliveryContext": {
+      "channel": "slack",
+      "threadId": "1770470981.979759"
+    },
+    "lastChannel": "slack",
+    "lastThreadId": "1770470981.979759",
+    "sessionFile": "/home/node/.openclaw/agents/main/sessions/d90e24c8-56ec-4309-8067-321addafc678.jsonl"
+  },
+  "agent:main:main:thread:1770470981.979759": {
+    "origin": {
+      "label": "tinhtinhcd",
+      "provider": "slack",
+      "surface": "slack",
+      "chatType": "direct",
+      "from": "slack:U0ACRBNH0QY",
+      "to": "user:U0ACRBNH0QY",
+      "accountId": "default",
+      "threadId": "1770470981.979759"
+    },
+    "sessionId": "6339000b-e6b4-45b4-8033-be92fba3b41c",
+    "updatedAt": 1770473320406,
+    "deliveryContext": {
+      "channel": "slack",
+      "to": "user:U0ACRBNH0QY",
+      "accountId": "default",
+      "threadId": "1770470981.979759"
+    },
+    "lastThreadId": "1770470981.979759",
+    "systemSent": true,
+    "abortedLastRun": false,
+    "displayName": "Slack thread #D0AC3GSJXJ6: xin chào, hôm nay bạn thế nào",
+    "chatType": "direct",
+    "lastChannel": "slack",
+    "lastTo": "user:U0ACRBNH0QY",
+    "lastAccountId": "default",
+    "sessionFile": "/home/node/.openclaw/agents/main/sessions/6339000b-e6b4-45b4-8033-be92fba3b41c-topic-1770470981.979759.jsonl",
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>/app/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>/app/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>slack</name>\n    <description>Use when you need to control Slack from OpenClaw via the slack tool, including reacting to messages or pinning/unpinning items in Slack channels or DMs.</description>\n    <location>/app/skills/slack/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>/app/skills/weather/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "slack"
+        },
+        {
+          "name": "weather"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/app/skills/healthcheck/SKILL.md",
+          "baseDir": "/app/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/app/skills/skill-creator/SKILL.md",
+          "baseDir": "/app/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "slack",
+          "description": "Use when you need to control Slack from OpenClaw via the slack tool, including reacting to messages or pinning/unpinning items in Slack channels or DMs.",
+          "filePath": "/app/skills/slack/SKILL.md",
+          "baseDir": "/app/skills/slack",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "/app/skills/weather/SKILL.md",
+          "baseDir": "/app/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "inputTokens": 25586,
+    "outputTokens": 1331,
+    "totalTokens": 50788,
+    "modelProvider": "google",
+    "model": "gemini-2.5-flash-lite",
+    "contextTokens": 1048576,
+    "systemPromptReport": {
+      "source": "run",
+      "generatedAt": 1770472703932,
+      "sessionId": "6339000b-e6b4-45b4-8033-be92fba3b41c",
+      "sessionKey": "agent:main:main:thread:1770470981.979759",
+      "provider": "google",
+      "model": "gemini-2.5-flash-lite",
+      "workspaceDir": "/home/node/.openclaw/workspace",
+      "bootstrapMaxChars": 20000,
+      "sandbox": {
+        "mode": "off",
+        "sandboxed": false
+      },
+      "systemPrompt": {
+        "chars": 23077,
+        "projectContextChars": 13336,
+        "nonProjectContextChars": 9741
+      },
+      "injectedWorkspaceFiles": [
+        {
+          "name": "AGENTS.md",
+          "path": "/home/node/.openclaw/workspace/AGENTS.md",
+          "missing": false,
+          "rawChars": 7783,
+          "injectedChars": 7783,
+          "truncated": false
+        },
+        {
+          "name": "SOUL.md",
+          "path": "/home/node/.openclaw/workspace/SOUL.md",
+          "missing": false,
+          "rawChars": 1664,
+          "injectedChars": 1664,
+          "truncated": false
+        },
+        {
+          "name": "TOOLS.md",
+          "path": "/home/node/.openclaw/workspace/TOOLS.md",
+          "missing": false,
+          "rawChars": 848,
+          "injectedChars": 848,
+          "truncated": false
+        },
+        {
+          "name": "IDENTITY.md",
+          "path": "/home/node/.openclaw/workspace/IDENTITY.md",
+          "missing": false,
+          "rawChars": 629,
+          "injectedChars": 629,
+          "truncated": false
+        },
+        {
+          "name": "USER.md",
+          "path": "/home/node/.openclaw/workspace/USER.md",
+          "missing": false,
+          "rawChars": 478,
+          "injectedChars": 478,
+          "truncated": false
+        },
+        {
+          "name": "HEARTBEAT.md",
+          "path": "/home/node/.openclaw/workspace/HEARTBEAT.md",
+          "missing": false,
+          "rawChars": 166,
+          "injectedChars": 166,
+          "truncated": false
+        },
+        {
+          "name": "BOOTSTRAP.md",
+          "path": "/home/node/.openclaw/workspace/BOOTSTRAP.md",
+          "missing": false,
+          "rawChars": 1444,
+          "injectedChars": 1444,
+          "truncated": false
+        }
+      ],
+      "skills": {
+        "promptChars": 1557,
+        "entries": [
+          {
+            "name": "healthcheck",
+            "blockChars": 456
+          },
+          {
+            "name": "skill-creator",
+            "blockChars": 261
+          },
+          {
+            "name": "slack",
+            "blockChars": 277
+          },
+          {
+            "name": "weather",
+            "blockChars": 185
+          }
+        ]
+      },
+      "tools": {
+        "listChars": 1926,
+        "schemaChars": 14770,
+        "entries": [
+          {
+            "name": "read",
+            "summaryChars": 298,
+            "schemaChars": 392,
+            "propertiesCount": 4
+          },
+          {
+            "name": "edit",
+            "summaryChars": 129,
+            "schemaChars": 591,
+            "propertiesCount": 6
+          },
+          {
+            "name": "write",
+            "summaryChars": 127,
+            "schemaChars": 313,
+            "propertiesCount": 3
+          },
+          {
+            "name": "exec",
+            "summaryChars": 181,
+            "schemaChars": 1037,
+            "propertiesCount": 12
+          },
+          {
+            "name": "process",
+            "summaryChars": 85,
+            "schemaChars": 844,
+            "propertiesCount": 11
+          },
+          {
+            "name": "browser",
+            "summaryChars": 1251,
+            "schemaChars": 1869,
+            "propertiesCount": 28
+          },
+          {
+            "name": "canvas",
+            "summaryChars": 106,
+            "schemaChars": 661,
+            "propertiesCount": 18
+          },
+          {
+            "name": "nodes",
+            "summaryChars": 101,
+            "schemaChars": 1479,
+            "propertiesCount": 33
+          },
+          {
+            "name": "cron",
+            "summaryChars": 2444,
+            "schemaChars": 581,
+            "propertiesCount": 13
+          },
+          {
+            "name": "message",
+            "summaryChars": 180,
+            "schemaChars": 3993,
+            "propertiesCount": 84
+          },
+          {
+            "name": "tts",
+            "summaryChars": 129,
+            "schemaChars": 223,
+            "propertiesCount": 2
+          },
+          {
+            "name": "gateway",
+            "summaryChars": 225,
+            "schemaChars": 465,
+            "propertiesCount": 11
+          },
+          {
+            "name": "agents_list",
+            "summaryChars": 72,
+            "schemaChars": 33,
+            "propertiesCount": 0
+          },
+          {
+            "name": "sessions_list",
+            "summaryChars": 54,
+            "schemaChars": 176,
+            "propertiesCount": 4
+          },
+          {
+            "name": "sessions_history",
+            "summaryChars": 36,
+            "schemaChars": 149,
+            "propertiesCount": 3
+          },
+          {
+            "name": "sessions_send",
+            "summaryChars": 84,
+            "schemaChars": 203,
+            "propertiesCount": 5
+          },
+          {
+            "name": "sessions_spawn",
+            "summaryChars": 107,
+            "schemaChars": 312,
+            "propertiesCount": 8
+          },
+          {
+            "name": "session_status",
+            "summaryChars": 207,
+            "schemaChars": 89,
+            "propertiesCount": 2
+          },
+          {
+            "name": "web_search",
+            "summaryChars": 175,
+            "schemaChars": 733,
+            "propertiesCount": 6
+          },
+          {
+            "name": "web_fetch",
+            "summaryChars": 129,
+            "schemaChars": 360,
+            "propertiesCount": 3
+          },
+          {
+            "name": "memory_search",
+            "summaryChars": 235,
+            "schemaChars": 139,
+            "propertiesCount": 3
+          },
+          {
+            "name": "memory_get",
+            "summaryChars": 151,
+            "schemaChars": 128,
+            "propertiesCount": 3
+          }
+        ]
+      }
+    }
+  },
+  "agent:main:slack:channel:d0ac3gsjxj6:thread:1770472599.520379": {
+    "chatType": "channel",
+    "channel": "slack",
+    "groupId": "d0ac3gsjxj6",
+    "displayName": "slack:g-d0ac3gsjxj6",
+    "origin": {
+      "label": "slack:channel:D0AC3GSJXJ6",
+      "provider": "slack",
+      "surface": "slack",
+      "chatType": "channel",
+      "from": "slack:channel:D0AC3GSJXJ6",
+      "to": "channel:D0AC3GSJXJ6",
+      "accountId": "default",
+      "threadId": "1770472599.520379"
+    },
+    "sessionId": "1605ae54-8348-4ef0-aa2d-b801a6102c4a",
+    "updatedAt": 1770473166084,
+    "deliveryContext": {
+      "channel": "slack",
+      "threadId": "1770472599.520379"
+    },
+    "lastChannel": "slack",
+    "lastThreadId": "1770472599.520379",
+    "sessionFile": "/home/node/.openclaw/agents/main/sessions/1605ae54-8348-4ef0-aa2d-b801a6102c4a.jsonl"
+  },
+  "agent:main:slack:channel:d0ac3gsjxj6:thread:1770473569.746999": {
+    "chatType": "channel",
+    "channel": "slack",
+    "groupId": "d0ac3gsjxj6",
+    "displayName": "slack:g-d0ac3gsjxj6",
+    "origin": {
+      "label": "slack:channel:D0AC3GSJXJ6",
+      "provider": "slack",
+      "surface": "slack",
+      "chatType": "channel",
+      "from": "slack:channel:D0AC3GSJXJ6",
+      "to": "channel:D0AC3GSJXJ6",
+      "accountId": "default",
+      "threadId": "1770473569.746999"
+    },
+    "sessionId": "8aeca715-ec5b-45b9-b0c6-1021d0816740",
+    "updatedAt": 1770473613664,
+    "deliveryContext": {
+      "channel": "slack",
+      "threadId": "1770473569.746999"
+    },
+    "lastChannel": "slack",
+    "lastThreadId": "1770473569.746999",
+    "sessionFile": "/home/node/.openclaw/agents/main/sessions/8aeca715-ec5b-45b9-b0c6-1021d0816740.jsonl"
+  },
+  "agent:main:main:thread:1770473569.746999": {
+    "origin": {
+      "label": "tinhtinhcd",
+      "provider": "slack",
+      "surface": "slack",
+      "chatType": "direct",
+      "from": "slack:U0ACRBNH0QY",
+      "to": "user:U0ACRBNH0QY",
+      "accountId": "default",
+      "threadId": "1770473569.746999"
+    },
+    "sessionId": "c2a69cdf-c2d8-4b85-a66c-7d6f2b00c0b6",
+    "updatedAt": 1770485339362,
+    "deliveryContext": {
+      "channel": "slack",
+      "to": "user:U0ACRBNH0QY",
+      "accountId": "default",
+      "threadId": "1770473569.746999"
+    },
+    "lastThreadId": "1770473569.746999",
+    "systemSent": true,
+    "abortedLastRun": false,
+    "displayName": "Slack thread #D0AC3GSJXJ6: ok, giờ tôi muốn chuyên nghiệp hơn, chúng ta sẽ thay đổi ngử cảnh chút, 2 chúng",
+    "chatType": "direct",
+    "lastChannel": "slack",
+    "lastTo": "user:U0ACRBNH0QY",
+    "lastAccountId": "default",
+    "sessionFile": "/home/node/.openclaw/agents/main/sessions/c2a69cdf-c2d8-4b85-a66c-7d6f2b00c0b6-topic-1770473569.746999.jsonl",
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>/app/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>/app/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>slack</name>\n    <description>Use when you need to control Slack from OpenClaw via the slack tool, including reacting to messages or pinning/unpinning items in Slack channels or DMs.</description>\n    <location>/app/skills/slack/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>/app/skills/weather/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "slack"
+        },
+        {
+          "name": "weather"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/app/skills/healthcheck/SKILL.md",
+          "baseDir": "/app/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/app/skills/skill-creator/SKILL.md",
+          "baseDir": "/app/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "slack",
+          "description": "Use when you need to control Slack from OpenClaw via the slack tool, including reacting to messages or pinning/unpinning items in Slack channels or DMs.",
+          "filePath": "/app/skills/slack/SKILL.md",
+          "baseDir": "/app/skills/slack",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "/app/skills/weather/SKILL.md",
+          "baseDir": "/app/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "inputTokens": 5737,
+    "outputTokens": 623,
+    "totalTokens": 5737,
+    "modelProvider": "google",
+    "model": "gemini-2.5-flash",
+    "contextTokens": 1048576,
+    "systemPromptReport": {
+      "source": "run",
+      "generatedAt": 1770485333973,
+      "sessionId": "c2a69cdf-c2d8-4b85-a66c-7d6f2b00c0b6",
+      "sessionKey": "agent:main:main:thread:1770473569.746999",
+      "provider": "google",
+      "model": "gemini-2.5-flash",
+      "workspaceDir": "/home/node/.openclaw/workspace",
+      "bootstrapMaxChars": 20000,
+      "sandbox": {
+        "mode": "off",
+        "sandboxed": false
+      },
+      "systemPrompt": {
+        "chars": 20011,
+        "projectContextChars": 13336,
+        "nonProjectContextChars": 6675
+      },
+      "injectedWorkspaceFiles": [
+        {
+          "name": "AGENTS.md",
+          "path": "/home/node/.openclaw/workspace/AGENTS.md",
+          "missing": false,
+          "rawChars": 7783,
+          "injectedChars": 7783,
+          "truncated": false
+        },
+        {
+          "name": "SOUL.md",
+          "path": "/home/node/.openclaw/workspace/SOUL.md",
+          "missing": false,
+          "rawChars": 1664,
+          "injectedChars": 1664,
+          "truncated": false
+        },
+        {
+          "name": "TOOLS.md",
+          "path": "/home/node/.openclaw/workspace/TOOLS.md",
+          "missing": false,
+          "rawChars": 848,
+          "injectedChars": 848,
+          "truncated": false
+        },
+        {
+          "name": "IDENTITY.md",
+          "path": "/home/node/.openclaw/workspace/IDENTITY.md",
+          "missing": false,
+          "rawChars": 629,
+          "injectedChars": 629,
+          "truncated": false
+        },
+        {
+          "name": "USER.md",
+          "path": "/home/node/.openclaw/workspace/USER.md",
+          "missing": false,
+          "rawChars": 478,
+          "injectedChars": 478,
+          "truncated": false
+        },
+        {
+          "name": "HEARTBEAT.md",
+          "path": "/home/node/.openclaw/workspace/HEARTBEAT.md",
+          "missing": false,
+          "rawChars": 166,
+          "injectedChars": 166,
+          "truncated": false
+        },
+        {
+          "name": "BOOTSTRAP.md",
+          "path": "/home/node/.openclaw/workspace/BOOTSTRAP.md",
+          "missing": false,
+          "rawChars": 1444,
+          "injectedChars": 1444,
+          "truncated": false
+        }
+      ],
+      "skills": {
+        "promptChars": 1557,
+        "entries": [
+          {
+            "name": "healthcheck",
+            "blockChars": 456
+          },
+          {
+            "name": "skill-creator",
+            "blockChars": 261
+          },
+          {
+            "name": "slack",
+            "blockChars": 277
+          },
+          {
+            "name": "weather",
+            "blockChars": 185
+          }
+        ]
+      },
+      "tools": {
+        "listChars": 185,
+        "schemaChars": 89,
+        "entries": [
+          {
+            "name": "session_status",
+            "summaryChars": 207,
+            "schemaChars": 89,
+            "propertiesCount": 2
+          }
+        ]
+      }
+    }
+  },
+  "agent:main:slack:channel:d0ac3gsjxj6:thread:1770475331.924279": {
+    "chatType": "channel",
+    "channel": "slack",
+    "groupId": "d0ac3gsjxj6",
+    "displayName": "slack:g-d0ac3gsjxj6",
+    "origin": {
+      "label": "slack:channel:D0AC3GSJXJ6",
+      "provider": "slack",
+      "surface": "slack",
+      "chatType": "channel",
+      "from": "slack:channel:D0AC3GSJXJ6",
+      "to": "channel:D0AC3GSJXJ6",
+      "accountId": "default",
+      "threadId": "1770475331.924279"
+    },
+    "sessionId": "00cc3282-ed55-42e3-8c3a-3c0f06e98bcc",
+    "updatedAt": 1770475380019,
+    "deliveryContext": {
+      "channel": "slack",
+      "threadId": "1770475331.924279"
+    },
+    "lastChannel": "slack",
+    "lastThreadId": "1770475331.924279",
+    "sessionFile": "/home/node/.openclaw/agents/main/sessions/00cc3282-ed55-42e3-8c3a-3c0f06e98bcc.jsonl"
+  },
+  "agent:main:main:thread:1770475331.924279": {
+    "origin": {
+      "label": "tinhtinhcd",
+      "provider": "slack",
+      "surface": "slack",
+      "chatType": "direct",
+      "from": "slack:U0ACRBNH0QY",
+      "to": "user:U0ACRBNH0QY",
+      "accountId": "default",
+      "threadId": "1770475331.924279"
+    },
+    "sessionId": "572a04a3-22f2-4db5-8466-76c3602f6076",
+    "updatedAt": 1770485418906,
+    "deliveryContext": {
+      "channel": "slack",
+      "to": "user:U0ACRBNH0QY",
+      "accountId": "default",
+      "threadId": "1770475331.924279"
+    },
+    "lastThreadId": "1770475331.924279",
+    "systemSent": true,
+    "abortedLastRun": false,
+    "displayName": "Slack thread #D0AC3GSJXJ6: hay tiep tuc noi ve y tuong POD *hiết kế &amp; Bán Sản phẩm In Theo Yêu Cầu (AI-",
+    "chatType": "direct",
+    "lastChannel": "slack",
+    "lastTo": "user:U0ACRBNH0QY",
+    "lastAccountId": "default",
+    "sessionFile": "/home/node/.openclaw/agents/main/sessions/572a04a3-22f2-4db5-8466-76c3602f6076-topic-1770475331.924279.jsonl",
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>/app/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>/app/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>slack</name>\n    <description>Use when you need to control Slack from OpenClaw via the slack tool, including reacting to messages or pinning/unpinning items in Slack channels or DMs.</description>\n    <location>/app/skills/slack/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>/app/skills/weather/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "slack"
+        },
+        {
+          "name": "weather"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/app/skills/healthcheck/SKILL.md",
+          "baseDir": "/app/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/app/skills/skill-creator/SKILL.md",
+          "baseDir": "/app/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "slack",
+          "description": "Use when you need to control Slack from OpenClaw via the slack tool, including reacting to messages or pinning/unpinning items in Slack channels or DMs.",
+          "filePath": "/app/skills/slack/SKILL.md",
+          "baseDir": "/app/skills/slack",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "/app/skills/weather/SKILL.md",
+          "baseDir": "/app/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "inputTokens": 5943,
+    "outputTokens": 300,
+    "totalTokens": 5943,
+    "modelProvider": "google",
+    "model": "gemini-2.5-flash",
+    "contextTokens": 1048576,
+    "systemPromptReport": {
+      "source": "run",
+      "generatedAt": 1770485414568,
+      "sessionId": "572a04a3-22f2-4db5-8466-76c3602f6076",
+      "sessionKey": "agent:main:main:thread:1770475331.924279",
+      "provider": "google",
+      "model": "gemini-2.5-flash",
+      "workspaceDir": "/home/node/.openclaw/workspace",
+      "bootstrapMaxChars": 20000,
+      "sandbox": {
+        "mode": "off",
+        "sandboxed": false
+      },
+      "systemPrompt": {
+        "chars": 20011,
+        "projectContextChars": 13336,
+        "nonProjectContextChars": 6675
+      },
+      "injectedWorkspaceFiles": [
+        {
+          "name": "AGENTS.md",
+          "path": "/home/node/.openclaw/workspace/AGENTS.md",
+          "missing": false,
+          "rawChars": 7783,
+          "injectedChars": 7783,
+          "truncated": false
+        },
+        {
+          "name": "SOUL.md",
+          "path": "/home/node/.openclaw/workspace/SOUL.md",
+          "missing": false,
+          "rawChars": 1664,
+          "injectedChars": 1664,
+          "truncated": false
+        },
+        {
+          "name": "TOOLS.md",
+          "path": "/home/node/.openclaw/workspace/TOOLS.md",
+          "missing": false,
+          "rawChars": 848,
+          "injectedChars": 848,
+          "truncated": false
+        },
+        {
+          "name": "IDENTITY.md",
+          "path": "/home/node/.openclaw/workspace/IDENTITY.md",
+          "missing": false,
+          "rawChars": 629,
+          "injectedChars": 629,
+          "truncated": false
+        },
+        {
+          "name": "USER.md",
+          "path": "/home/node/.openclaw/workspace/USER.md",
+          "missing": false,
+          "rawChars": 478,
+          "injectedChars": 478,
+          "truncated": false
+        },
+        {
+          "name": "HEARTBEAT.md",
+          "path": "/home/node/.openclaw/workspace/HEARTBEAT.md",
+          "missing": false,
+          "rawChars": 166,
+          "injectedChars": 166,
+          "truncated": false
+        },
+        {
+          "name": "BOOTSTRAP.md",
+          "path": "/home/node/.openclaw/workspace/BOOTSTRAP.md",
+          "missing": false,
+          "rawChars": 1444,
+          "injectedChars": 1444,
+          "truncated": false
+        }
+      ],
+      "skills": {
+        "promptChars": 1557,
+        "entries": [
+          {
+            "name": "healthcheck",
+            "blockChars": 456
+          },
+          {
+            "name": "skill-creator",
+            "blockChars": 261
+          },
+          {
+            "name": "slack",
+            "blockChars": 277
+          },
+          {
+            "name": "weather",
+            "blockChars": 185
+          }
+        ]
+      },
+      "tools": {
+        "listChars": 185,
+        "schemaChars": 89,
+        "entries": [
+          {
+            "name": "session_status",
+            "summaryChars": 207,
+            "schemaChars": 89,
+            "propertiesCount": 2
+          }
+        ]
+      }
+    }
+  }
+}

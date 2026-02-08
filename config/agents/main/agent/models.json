@@ -1,0 +1,51 @@
+{
+  "providers": {
+    "ollama": {
+      "baseUrl": "http://ollama:11434/v1",
+      "api": "openai-completions",
+      "models": [],
+      "apiKey": "OLLAMA_API_KEY"
+    },
+    "vertex-express": {
+      "baseUrl": "https://aiplatform.googleapis.com/v1/publishers/google/models",
+      "apiKey": "AQ.Ab8RN6JZdydQle76WYsRGhMjHvj6jk3AGMsNI8s78j_nbUO4hA",
+      "api": "google-generative-ai",
+      "models": [
+        {
+          "id": "gemini-2.5-flash",
+          "name": "Gemini 2.5 Flash (Vertex Express)",
+          "reasoning": false,
+          "input": ["text", "image"],
+          "cost": {
+            "input": 0.15,
+            "output": 0.6,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          },
+          "contextWindow": 1048576,
+          "maxTokens": 65536
+        }
+      ]
+    },
+    "google": {
+      "baseUrl": "https://aiplatform.googleapis.com/v1beta",
+      "apiKey": "AQ.Ab8RN6JZdydQle76WYsRGhMjHvj6jk3AGMsNI8s78j_nbUO4hA",
+      "models": [
+        {
+          "id": "gemini-2.5-flash",
+          "name": "Gemini 2.5 Flash",
+          "reasoning": false,
+          "input": ["text", "image"],
+          "cost": {
+            "input": 0.15,
+            "output": 0.6,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          },
+          "contextWindow": 1048576,
+          "maxTokens": 65536
+        }
+      ]
+    }
+  }
+}
