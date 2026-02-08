@@ -60,7 +60,7 @@
     },
     "vertex-express": {
       "baseUrl": "https://aiplatform.googleapis.com/v1/publishers/google/models",
-      "apiKey": "AQ.Ab8RN6JZdydQle76WYsRGhMjHvj6jk3AGMsNI8s78j_nbUO4hA",
+      "apiKey": "",
       "api": "google-generative-ai",
       "models": [
         {
@@ -81,7 +81,7 @@
     },
     "google": {
       "baseUrl": "https://aiplatform.googleapis.com/v1beta",
-      "apiKey": "AQ.Ab8RN6JZdydQle76WYsRGhMjHvj6jk3AGMsNI8s78j_nbUO4hA",
+      "apiKey": "",
       "models": [
         {
           "id": "gemini-2.5-flash",
